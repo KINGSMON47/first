@@ -1,16 +1,43 @@
+import React,{ useState } from "react";
+
+import {Icon} from "react-icons-kit";
+
+import { eye} from 'react-icons-kit/feather/eye'
+import { eyeOff} from 'react-icons-kit/feather/eyeOff'
+
+
+
 
 function App() {
+
+
+  const [type,setType] = useState("password")
+  const [icon,setIcon] = useState(eye)
+
+
+const handleClick = ()=>{
+  if(type === "password"){
+    setType("text");
+    setIcon(eyeOff)
+  }else{
+    setType("password");
+    setIcon(eye)
+  }
+} 
+
   return (
-    <div>
-     <div className="mb-3">
-<label htmlFor=""></label>
-  <div className="container bg-danger">123</div>
-</div>123134
-<div className="mb-3">
-  <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
-  <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-    </div>
+   
+      <div className="wrapper">
+
+        <div className="input-fields"><span>
+          <Icon onClick={handleClick} icon={icon} size={20}/>
+          </span>
+          <input type={type} />
+          
+        </div>
+      </div>
+  
+  
   );
 }
 
