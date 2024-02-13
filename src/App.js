@@ -6,6 +6,7 @@ import { eye } from 'react-icons-kit/feather/eye'
 import { eyeOff } from 'react-icons-kit/feather/eyeOff'
 
 import SingleQuestion from "./Question";
+import data from './data'
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   const [type, setType] = useState("password")
   const [icon, setIcon] = useState(eye)
-
+  const [questions, setQuestions] = useState(data);
 
   const handleClick = () => {
     if (type === "password") {
@@ -38,7 +39,11 @@ function App() {
       <div className="container">
         <h3>سوالی داری؟</h3>
         <div className="info">
-          <SingleQuestion />
+          {
+            questions.map((question)=>{
+              return <SingleQuestion key={question.id} {...question}/>
+            })
+          }
         </div>
       </div>
     </div>
